@@ -15,13 +15,13 @@
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
             android:hint="@string/first_name"
             android:inputType="textPersonName" />
 
@@ -36,13 +36,13 @@
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@+id/tilFirstName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
             android:hint="@string/last_name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,13 +56,14 @@
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@+id/tilLastName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+
             android:hint="@string/Email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -77,13 +78,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+
             android:hint="@string/Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -98,13 +100,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etConfirmpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
             android:hint="@string/confirm_password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,26 +140,36 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tilLastName"
-        app:layout_constraintTop_toTopOf="@+id/tilFirstName"
-        app:srcCompat="@drawable/ic_baseline_self_improvement_24"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toStartOf="@+id/tilFirstName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_self_improvement_24" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="@+id/tilLastName"
+        app:layout_constraintEnd_toStartOf="@+id/tilLastName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tilLastName"
-        app:srcCompat="@drawable/ic_baseline_pregnant_woman_24"
-        tools:layout_editor_absoluteX="9dp" />
+        app:srcCompat="@drawable/ic_baseline_pregnant_woman_24" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tilPassword"
+        app:layout_constraintEnd_toStartOf="@+id/tilEmail"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tilEmail"
         app:srcCompat="@drawable/ic_baseline_alternate_email_24" />
 
@@ -165,18 +177,24 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/tilPassword"
+        app:layout_constraintEnd_toStartOf="@+id/tilPassword"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tilPassword"
-        app:srcCompat="@drawable/ic_baseline_compass_calibration_24"
-        tools:layout_editor_absoluteX="9dp" />
+        app:srcCompat="@drawable/ic_baseline_compass_calibration_24" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/tilConfirmpassword"
+        app:layout_constraintEnd_toStartOf="@+id/tilConfirmpassword"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tilConfirmpassword"
-        app:srcCompat="@drawable/ic_baseline_notifications_none_24"
-        tools:layout_editor_absoluteX="9dp" />
+        app:srcCompat="@drawable/ic_baseline_notifications_none_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

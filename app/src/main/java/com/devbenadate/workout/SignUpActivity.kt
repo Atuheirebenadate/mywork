@@ -20,6 +20,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var tilPassword: TextInputLayout
     lateinit var tilConfirmpassword: TextInputLayout
     lateinit var btnSignup: Button
+    lateinit var tvLogin:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +36,15 @@ class SignUpActivity : AppCompatActivity() {
         tilPassword = findViewById(R.id.tilPassword)
         tilConfirmpassword = findViewById(R.id.tilConfirmpassword)
         btnSignup = findViewById(R.id.btnSignup)
+        tvLogin=findViewById(R.id.tvLogin)
+
+        tvLogin.setOnClickListener {
+            var intent=Intent(this,LoginActivity::class.java)
+            startActivity(intent)
+        }
 
 
         btnSignup.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
             validateLogin()
         }
     }
