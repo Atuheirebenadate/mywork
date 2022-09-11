@@ -1,24 +1,33 @@
-package com.devbenadate.workout
+package com.devbenadate.workout.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import com.devbenadate.workout.databinding.ActivityLoginBinding
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import com.devbenadate.workout.ViewModel.UserViewModel
+import com.devbenadate.workout.api.ApiClient
 import com.devbenadate.workout.databinding.ActivitySignUpBinding
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import com.devbenadate.workout.api.ApiInterface
+import com.devbenadate.workout.models.RegisterRequest
+import com.devbenadate.workout.models.RegisterResponse
+import retrofit2.Call
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
    lateinit var binding: ActivitySignUpBinding
+//    lateinit var  sharedPrefs: SharedPreferences
+    val userViewModel: UserViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
      binding.tvLogin.setOnClickListener {
-            var intent=Intent(this,LoginActivity::class.java)
+            var intent=Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
@@ -26,6 +35,17 @@ class SignUpActivity : AppCompatActivity() {
      binding.btnSignup.setOnClickListener {
             validateLogin()
         }
+    }
+    override fun onResume(){
+        super.onResume()
+        userViewModel.registerResponseLiveData.observe(this, Observer { registerResponse ->
+
+            Toast.makeText(baseContext,registerResponse?.message,Toast.LENGTH_LONG).show()
+            startActivity(Intent(baseContext,HomeActivity::class.java))
+        })
+        userViewModel.registerErrorLiveData.observe(this, Observer { error->
+            Toast.makeText(baseContext,error,Toast.LENGTH_LONG).show()
+        })
     }
 
     fun validateLogin() {
@@ -55,8 +75,17 @@ class SignUpActivity : AppCompatActivity() {
             binding.tilLastName.error = "Enter Last Name"
             error=true
         }
-        if(!error){
-            startActivity(Intent(this,HomeActivity::class.java))
+
+       if(!error ){
+           val registerRequest=RegisterRequest(firstname,lastname,email,password)
+           userViewModel.registerUser(registerRequest)
         }
-    }
-}
+
+  }
+
+
+
+            }
+
+
+
