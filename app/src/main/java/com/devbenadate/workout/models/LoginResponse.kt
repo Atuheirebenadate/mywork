@@ -7,6 +7,7 @@ data class LoginResponse(
     @SerializedName("access_token")var UserId:String,
     @SerializedName("user_id") var email:String,
     @SerializedName("profile_id")  var profile_id:String,
+    @SerializedName("access_token") var accessToken:String,
 
 
 )

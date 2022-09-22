@@ -8,7 +8,6 @@ import com.devbenadate.workout.models.LoginResponse
 import com.devbenadate.workout.models.RegisterRequest
 import com.devbenadate.workout.repository.UserRespository
 import kotlinx.coroutines.launch
-
 class UserViewModel:ViewModel(){
     val respository=UserRespository()
     var loginResponseLiveData=MutableLiveData<LoginResponse>()
@@ -34,7 +33,7 @@ class UserViewModel:ViewModel(){
     }
     fun registerUser(registerRequest: RegisterRequest){
         viewModelScope.launch{
-            val response=UserRespository.regester(registerRequest)
+            val response=UserRespository.register(registerRequest)
             if (response.isSucessful){
                 registerResponseLiveData.postValue(response.body())
             }

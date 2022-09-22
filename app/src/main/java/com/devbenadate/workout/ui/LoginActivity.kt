@@ -75,8 +75,9 @@ class LoginActivity : AppCompatActivity() {
 
    fun saveloginResponse(loginResponse: LoginResponse){
       val editor =sharedPrefs.edit()
+       val token="Bearer ${LoginResponse.accessToken}"
 //     editor.putString("ACCESS_TOKEN",loginResponse.acess)
-     editor.putString("USER_ID",loginResponse.profile_id)
+     editor.putString( "USER_ID",loginResponse.profile_id)
       editor.putString("PROFILE_ID",loginResponse.profile_id)
       editor.apply()
 
