@@ -8,40 +8,42 @@ import com.devbenadate.workout.models.LoginResponse
 import com.devbenadate.workout.models.RegisterRequest
 import com.devbenadate.workout.repository.UserRespository
 import kotlinx.coroutines.launch
-class UserViewModel:ViewModel(){
-    val respository=UserRespository()
-    var loginResponseLiveData=MutableLiveData<LoginResponse>()
-    val loginErrorLiveDataData=MutableLiveData<String?>()
+class UserViewModel:ViewModel() {
 
-
-    var registerResponseLiveData=MutableLiveData<String>()
-    val registerErrorLiveData=MutableLiveData<String?>()
+    val userRepository=UserRespository()
+    //     val userRegister=RegisterRepository()
+    var loginResponseLiveData= MutableLiveData<LoginResponse>()  //obser
+    val loginErrorLiveData = MutableLiveData<String?>()  //for failure
+    var registerResponseLiveData= MutableLiveData<RegisterRequest>()
+    val registerErrorLiveData = MutableLiveData<String?>()
 
     fun loginUser(loginRequest: LoginRequest){
         viewModelScope.launch {
-            val response = UserRespository.Login(loginRequest)
+            val response=userRepository.login(loginRequest)
             if (response.isSuccessful){
-               loginResponseLiveData.postValue(response.body())
+                loginResponseLiveData.postValue(response.body())
 
             }
-            else {
+            else{
                 val error = response.errorBody()?.string()
-                loginErrorLiveDataData.postValue(error)
+                loginErrorLiveData.postValue(error)
             }
 
         }
+
     }
     fun registerUser(registerRequest: RegisterRequest){
-        viewModelScope.launch{
-            val response=UserRespository.register(registerRequest)
-            if (response.isSucessful){
-                registerResponseLiveData.postValue(response.body())
+        viewModelScope.launch {
+            val response=userRepository.register(registerRequest)
+            if (response.isSuccessful){
+                registerResponseLiveData.postValue((response.body()))
+                val error = response.errorBody()?.string()
+                registerErrorLiveData.postValue(error)
             }
             else{
-                val error=response.errorBody()?.String()
-                loginErrorLiveDataData.postValue(error)
+                val error = response.errorBody()?.string()
+                registerErrorLiveData.postValue(error)
             }
-
         }
     }
 
